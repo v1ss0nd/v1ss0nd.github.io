@@ -40,34 +40,34 @@ body {
 <p>Первая строчка это токен, префикс и каналы на которых бот будет сидеть. дальше вывод имени аккаунта.</p></span>
 <p>⠀</p></span>
 <p>После этих строк, можно в бот писать любые команды, для начала можно написать простой ответ на сообщение, а потом уже будет код с погодой</p></span>
-<h1>Simple command:</h1>
-<p>To make a simple command, you need to write:</p></span>
+<h1>Простая команда:</h1>
+<p>Для того чтоб сделать простую команду, нужно написать:</p></span>
 <span style="color: 00FFFF;"><p>⠀⠀@commands.command()</p></span>
 <p>And set your command name, like “ping”:</p></span>
 <span style="color: 00FFFF;"><p>⠀⠀async def ping(self, ctx: commands.Context):</p></span>
 <span style="color: FFFF8F;"><p>⠀⠀⠀⠀await ctx.send(f'pong')</p></span>
 <p>⠀</p></span>
-<p>It should looks like:</p></span>
+<p>Оно должно выглядить так:</p></span>
 <img src="https://i.imgur.com/PCejT6E.jpg" class="scale" />
 <p>⠀</p></span>
 <ul style="line-height: 2;"></ul>
-<p>And let's test your command, write in the end of file</p></span>
+<p>Дальше можно проверить команду. чтоб бот заработал в конец файла напиши эти строчки:</p></span>
 <p>⠀</p></span>
 <span style="color: FFFF8F;"><p>bot = bot()</p></span>
 <span style="color: ADD8E6;"><p>asyncio.run(bot.run())</p></span>
 <p>⠀</p></span>
 
-<p>Full code:</p></span>
+<p>Полный код:</p></span>
 <img src="https://i.imgur.com/MopmTpK.jpg" class="scale" />
-<p>If everything right, you will see:</p></span>
+<p>Если всё нормально, то будет :</p></span>
 <img src="https://i.imgur.com/1GQEHeE.jpg" class="scale" />
 
 
-<h1>Weather:</h1>
-<p>So, how can I make a weather command?</p></span>
-<p>To start, you need to go to openweathermap.org and get your API key.</p></span>
-<span style="color: 52555c;"><p>(Note:the API key will work only after a few hours.)</p></span>
-<p>If you get the key, start your command with:</p></span>
+<h1>Погода:</h1>
+<p>Команда с выводом погоды</p></span>
+<p>Для начала, отправляйся на openweathermap.org и получи API ключ</p></span>
+<span style="color: 52555c;"><p>(Апи ключ с этого сайта заработает только через час-два.)</p></span>
+<p>После получения ключа. пиши</p></span>
 <span style="color: 00FFFF;"><p>⠀⠀@commands.command()</p></span>
 <p>⠀</p></span>
 <p>And set your command name, like “weather”:</p></span>
@@ -90,16 +90,16 @@ body {
 <span style="color: ce9178;"><p>  ⠀⠀⠀⠀⠀message = f'@{ctx.author.name},📡The Current Weather In {city}🏢Is: {description} 🌤. The Temperature Is {temp}°C, But It Feels Like {feels_like}°C🌡. The Humidity Is {humidity}% And The Wind Speed Is {wind_speed} m/s💨.'</p></span>
 <span style="color: FFFF8F;"><p>⠀⠀⠀⠀await ctx.send(message)</p></span>
 <p>⠀</p></span>
-<p>And code will looks like:</p></span>
+<p>И оно должно выглядить так</p></span>
 <img src="https://i.imgur.com/R60J9T9.jpg" class="scale" />
 <p>⠀</p></span>
-<p>And bot will answer:</p></span>
+<p>А бот должен отвечать так</p></span>
 <img src="https://i.imgur.com/eFQGzCc.jpg" class="scale" />
 <p>⠀</p></span>
 <p>⠀</p></span>
 <ul style="line-height: 2;">
-<p>Now your bot is alive, and can write anything. </p></span>
-<p>and such a bonus for you, spam command.</p></span>
+<p>Теперь бот подает признаки жизни и может отвечать на команды.</p></span>
+<p>И как бонус, команда со спамом</p></span>
 <ul style="line-height: 1;"></ul>
 <p>⠀</p></span>
 <p>⠀</p></span>
@@ -117,29 +117,29 @@ body {
 <span style="color: 00FFFF;"><p>⠀⠀⠀⠀⠀⠀⠀⠀        for i in range(count):</p></span>
 <span style="color: ce9178;"><p>⠀⠀⠀⠀⠀⠀⠀⠀            await ctx.send(message)</p></span>
 <p>⠀</p></span>
-<p>Screenshot of this code:</p></span>
+<p>Скриншот кода:</p></span>
 <img src="https://i.imgur.com/Dd6Ztut.jpg" class="scale" />
 <p>⠀</p></span>
-<p>Screenshot of bot answer:</p></span>
+<p>Скриншот ответа:</p></span>
 <img src="https://i.imgur.com/9MGF6gy.jpg" class="scale" />
 
-<p>There's full file - https://pastebin.com/XRsL9FAi</p></span>
+<p>Уже законченный файл - https://pastebin.com/XRsL9FAi</p></span>
 <p>⠀</p></span>
 <p>⠀</p></span>
 <p>⠀</p></span>
 <p>⠀</p></span>
-<span style="color: 52555c;"><p>im never makes any guides before🥺</p></span>
+<span style="color: 52555c;"><p>впервые за всю свою жизнь гайд написал🥺</p></span>
 <p>⠀</p></span>
-<p>Same but in Russian🔽</p></span>
+<p>Same but in Enlgish🔽</p></span>
   </style>
   <span>
-    <a href="bot1.html">
-      <img src="https://i.imgur.com/LncgnhH.gif" class="scale" />
+    <a href="bot.html">
+      <img src="https://i.imgur.com/J4mH9xO.gif" class="scale" />
     </a>
   </span>
  
 
-<a href="info.html" style="position: fixed; bottom: 1; transform: scale(1);">back to info</a>
+<a href="info.html" style="position: fixed; bottom: 1; transform: scale(1);">назад в info</a>
 
 
 
