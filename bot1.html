@@ -1,1 +1,150 @@
+<html>
+<head>
+<title>vsndbot help</title>
+<link rel="icon" href="https://i.imgur.com/cL7pYDT.png">
+</head>
+<style>
+body {
+  background-color: #1a1a1a;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body>
+  <ul style="line-height: 2;">
+<h1>Making bot like this</h1>
+<p>Сначала, надо скачать сам пайтон и какой нибудь редактор, типо PyCharm или Visual Studio Code (VSC). У меня VSC.</p>
+<p>Потом, после установки всего, надо будет скачать библиотеки, в коммандную строку:</p>
+<li><span style="color: 61aeee;"><b>pip install twitchio</b></span>
+<li><span style="color: 61aeee;"><b>pip install requests</b></span>
+<li><span style="color: 61aeee;"><b>pip install asyncio</b></span>
+<p>После, создай новую папку для бота, и новый текстовый документ с расширением .py, после открой его в редакторе и напиши:</p>
 
+<ul style="line-height: 1;">
+<span style="color: 00FFFF;"><p>class bot(commands.bot):</p></span>
+<span style="color: FFFF8F;"><p>⠀⠀def __init__(self):</p></span>
+<span style="color: ce9178;"><p>⠀⠀⠀⠀super().__init__(token="YOUR_TOKEN", prefix='!', initial_channels=['channel'])</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀async def event_ready(self):</p></span>
+<span style="color: ce9178;"><p>⠀⠀⠀⠀print(f'Logged in as {self.nick}')</p></span>
+<span style="color: FFFF8F;"><p>⠀⠀⠀async def event_message(self, message):</p></span>
+<span style="color: FFFF8F;"><p>⠀⠀⠀⠀⠀⠀if message.echo:</p></span>
+<span style="color: 9579c0;"><p>⠀⠀⠀⠀⠀⠀⠀⠀return</p></span>
+<span style="color: FFFF8F;"><p>⠀⠀⠀⠀⠀⠀print(message.content)</p></span>
+<span style="color: FFFF8F;"><p>⠀⠀⠀⠀⠀⠀await self.handle_commands(message)</p></span>
+<p>⠀</p></span>
+<p>⠀</p></span>
+<p>Если всё нормально</p></span>
+<p>то это будет выглядить так:</p></span>
+<img src="https://i.imgur.com/JNV1fT6.jpg" class="scale" />
+<p>Первая строчка это токен, префикс и каналы на которых бот будет сидеть. дальше вывод имени аккаунта.</p></span>
+<p>⠀</p></span>
+<p>После этих строк, можно в бот писать любые команды, для начала можно написать простой ответ на сообщение, а потом уже будет код с погодой</p></span>
+<h1>Simple command:</h1>
+<p>To make a simple command, you need to write:</p></span>
+<span style="color: 00FFFF;"><p>⠀⠀@commands.command()</p></span>
+<p>And set your command name, like “ping”:</p></span>
+<span style="color: 00FFFF;"><p>⠀⠀async def ping(self, ctx: commands.Context):</p></span>
+<span style="color: FFFF8F;"><p>⠀⠀⠀⠀await ctx.send(f'pong')</p></span>
+<p>⠀</p></span>
+<p>It should looks like:</p></span>
+<img src="https://i.imgur.com/PCejT6E.jpg" class="scale" />
+<p>⠀</p></span>
+<ul style="line-height: 2;"></ul>
+<p>And let's test your command, write in the end of file</p></span>
+<p>⠀</p></span>
+<span style="color: FFFF8F;"><p>bot = bot()</p></span>
+<span style="color: ADD8E6;"><p>asyncio.run(bot.run())</p></span>
+<p>⠀</p></span>
+
+<p>Full code:</p></span>
+<img src="https://i.imgur.com/MopmTpK.jpg" class="scale" />
+<p>If everything right, you will see:</p></span>
+<img src="https://i.imgur.com/1GQEHeE.jpg" class="scale" />
+
+
+<h1>Weather:</h1>
+<p>So, how can I make a weather command?</p></span>
+<p>To start, you need to go to openweathermap.org and get your API key.</p></span>
+<span style="color: 52555c;"><p>(Note:the API key will work only after a few hours.)</p></span>
+<p>If you get the key, start your command with:</p></span>
+<span style="color: 00FFFF;"><p>⠀⠀@commands.command()</p></span>
+<p>⠀</p></span>
+<p>And set your command name, like “weather”:</p></span>
+<p>⠀</p></span>
+<span style="color: 00FFFF;"><p>⠀⠀async def weather(self, ctx: commands.Context, city: str):</p></span>
+<span style="color: ce9178;"><p>  ⠀⠀⠀⠀⠀api_key = 'YOUR KEY'</p></span>
+<span style="color: ce9178;"><p>  ⠀⠀⠀⠀⠀ url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'</p></span>
+<span style="color: 00FFFF;"><p>⠀⠀⠀⠀⠀⠀⠀response = requests.get(url)</p></span>
+<span style="color: 00FFFF;"><p>⠀⠀⠀⠀⠀⠀⠀data = response.json()</p></span>
+<p>⠀</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀⠀⠀⠀if data['cod'] != 200:</p></span>
+<span style="color: ce9178;"><p>⠀⠀⠀⠀⠀⠀⠀await ctx.send(f'@{ctx.author.name},Sorry, I could not find the weather for {city}.')</p></span>
+<span style="color: 9579c0;"><p>⠀⠀⠀⠀⠀⠀⠀⠀return</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀⠀⠀⠀temp = data['main']['temp']</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀⠀⠀⠀feels_like = data['main']['feels_like']</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀⠀⠀⠀humidity = data['main']['humidity']asyncio.run(bot.run())</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀⠀⠀⠀wind_speed = data['wind']['speed']</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀⠀⠀⠀description = data['weather'][0]['description']</p></span>
+<p>⠀</p></span>
+<span style="color: ce9178;"><p>  ⠀⠀⠀⠀⠀message = f'@{ctx.author.name},📡The Current Weather In {city}🏢Is: {description} 🌤. The Temperature Is {temp}°C, But It Feels Like {feels_like}°C🌡. The Humidity Is {humidity}% And The Wind Speed Is {wind_speed} m/s💨.'</p></span>
+<span style="color: FFFF8F;"><p>⠀⠀⠀⠀await ctx.send(message)</p></span>
+<p>⠀</p></span>
+<p>And code will looks like:</p></span>
+<img src="https://i.imgur.com/R60J9T9.jpg" class="scale" />
+<p>⠀</p></span>
+<p>And bot will answer:</p></span>
+<img src="https://i.imgur.com/eFQGzCc.jpg" class="scale" />
+<p>⠀</p></span>
+<p>⠀</p></span>
+<ul style="line-height: 2;">
+<p>Now your bot is alive, and can write anything. </p></span>
+<p>and such a bonus for you, spam command.</p></span>
+<ul style="line-height: 1;"></ul>
+<p>⠀</p></span>
+<p>⠀</p></span>
+<span style="color: 00FFFF;"><p>⠀⠀@commands.command()</p></span>
+<span style="color: ce9178;"><p>⠀⠀    async def spam(self, ctx: commands.Context):</p></span>
+<span style="color: 00FFFF;"><p>⠀⠀        if not ctx.author.is_mod: (if you want everyone to be able to use this command, just delete this line)</p></span>
+<span style="color: 9579c0;"><p>⠀⠀⠀⠀⠀⠀⠀⠀return</p></span>
+<span style="color: 9579c0;"><p>⠀⠀⠀⠀⠀try:</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀⠀⠀⠀message, count = [x.strip() for x in ctx.message.content.split(',', maxsplit=1)]</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀⠀⠀⠀message = message[len(ctx.prefix + ctx.command.name):]</p></span>
+<span style="color: ADD8E6;"><p>⠀⠀⠀⠀⠀⠀count = int(count)</p></span>
+<span style="color: 9579c0;"><p>⠀⠀⠀⠀⠀        except ValueError:</p></span>
+<span style="color: ce9178;"><p>⠀⠀⠀⠀⠀await ctx.send(f"@{ctx.author.name}, FeelsWeirdMan 👉 use #spam [message] , [count].")</p></span>
+<span style="color: 9579c0;"><p>⠀⠀⠀⠀⠀⠀⠀⠀return</p></span>
+<span style="color: 00FFFF;"><p>⠀⠀⠀⠀⠀⠀⠀⠀        for i in range(count):</p></span>
+<span style="color: ce9178;"><p>⠀⠀⠀⠀⠀⠀⠀⠀            await ctx.send(message)</p></span>
+<p>⠀</p></span>
+<p>Screenshot of this code:</p></span>
+<img src="https://i.imgur.com/Dd6Ztut.jpg" class="scale" />
+<p>⠀</p></span>
+<p>Screenshot of bot answer:</p></span>
+<img src="https://i.imgur.com/9MGF6gy.jpg" class="scale" />
+
+<p>There's full file - https://pastebin.com/XRsL9FAi</p></span>
+<p>⠀</p></span>
+<p>⠀</p></span>
+<p>⠀</p></span>
+<p>⠀</p></span>
+<span style="color: 52555c;"><p>im never makes any guides before🥺</p></span>
+<p>⠀</p></span>
+<p>Same but in Russian🔽</p></span>
+  </style>
+  <span>
+    <a href="bot1.html">
+      <img src="https://i.imgur.com/LncgnhH.gif" class="scale" />
+    </a>
+  </span>
+ 
+
+<a href="info.html" style="position: fixed; bottom: 1; transform: scale(1);">back to info</a>
+
+
+
+
+
+
+</body>
+</html>
